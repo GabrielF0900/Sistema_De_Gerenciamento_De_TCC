@@ -1,4 +1,3 @@
-Claro! Aqui está o **README.md** atualizado, bem estruturado, com base no que você escreveu e nas imagens das pastas `Backend` e `Frontend`:
 
 ---
 
@@ -198,7 +197,4 @@ Este projeto está sob a licença **MIT**.
 
 Feito com 💙 pela equipe **Neukox**.
 
-```
-
-Se quiser, posso salvar isso como um novo `README.md` diretamente ou ajustar ainda mais o conteúdo. Deseja?
 ```
