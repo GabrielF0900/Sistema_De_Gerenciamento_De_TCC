@@ -1,11 +1,4 @@
 
-
-* Explicação sobre instalação do frontend/backend
-* Rodar `npx prisma generate`, `migrate dev`, `seed.ts`
-* Uso dos arquivos `.env.example`
-* Execução com Docker
-* Atualização das tecnologias (React no frontend)
-
 ---
 
 ````markdown
@@ -202,5 +195,4 @@ Feito com ❤ pela equipe **Neukox**.
 
 ---
 
-Se quiser, posso também te gerar um `docker-compose.yml` pronto para esse projeto com PostgreSQL + backend + frontend rodando em rede. Deseja isso agora?
-```
+
