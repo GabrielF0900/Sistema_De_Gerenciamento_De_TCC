@@ -1,5 +1,14 @@
 
-````
+
+* Explicação sobre instalação do frontend/backend
+* Rodar `npx prisma generate`, `migrate dev`, `seed.ts`
+* Uso dos arquivos `.env.example`
+* Execução com Docker
+* Atualização das tecnologias (React no frontend)
+
+---
+
+````markdown
 # 🎓 Sistema de Gerenciamento de TCC
 
 Bem-vindo(a)! Este projeto foi cuidadosamente desenvolvido para simplificar e otimizar o processo de acompanhamento e avaliação de Trabalhos de Conclusão de Curso. A missão é facilitar a jornada de alunos, orientadores e bancas, promovendo organização, transparência e eficiência.
@@ -17,23 +26,21 @@ Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defes
 ### 🔧 Backend
 
 | Categoria | Tecnologia | Descrição                             |
-| --------- | ---------- | ----------------------------------- |
-| Linguagem | TypeScript | JavaScript com tipagem estática     |
-| Framework | Node.js    | Ambiente de execução JavaScript     |
-| ORM       | Prisma     | Mapeamento objeto-relacional moderno|
-| Container | Docker     | Isolamento e orquestração de ambientes |
+| --------- | ---------- | ------------------------------------- |
+| Linguagem | TypeScript | JavaScript com tipagem estática       |
+| Framework | Node.js    | Ambiente de execução JavaScript       |
+| ORM       | Prisma     | Mapeamento objeto-relacional moderno  |
+| Container | Docker     | Isolamento e orquestração de ambientes|
 
 ### 🎨 Frontend
 
 | Categoria | Tecnologia  | Descrição                                      |
 | --------- | ----------- | ---------------------------------------------- |
 | Linguagem | TypeScript  | JavaScript com tipagem estática                |
-| Framework | (A definir) | Framework reativo para construção de UI        |
+| Framework | React       | Framework reativo para construção de UI        |
 | Bundler   | Vite        | Ferramenta de build rápida e eficiente         |
 | Linter    | ESLint      | Garantia de qualidade e padronização de código |
 | Container | Docker      | Isolamento e orquestração de ambientes         |
-
-> *Nota: Substitua *(A definir)* pelo framework utilizado, como React, Vue ou Angular.*
 
 ---
 
@@ -42,19 +49,18 @@ Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defes
 ```bash
 .
 ├── backend/
-│   ├── dist/                # Código compilado
-│   ├── node_modules/        # Dependências
-│   ├── prisma/              # Migrations e schema do Prisma
-│   ├── src/                 # Código-fonte principal da API
+│   ├── prisma/              # Migrations, schema e seed do Prisma
+│   ├── src/                 # Código-fonte da API
 │   ├── Dockerfile           # Build do backend com Docker
-│   ├── .env                 # Variáveis de ambiente (não versionado)
+│   ├── .env.example         # Exemplo de variáveis de ambiente
 │   └── package.json         # Dependências e scripts do projeto
 ├── frontend/
 │   ├── public/              # Arquivos públicos (favicon, imagens)
 │   ├── src/                 # Código-fonte da interface
 │   ├── Dockerfile           # Build do frontend com Docker
-│   ├── index.html           # Página principal
+│   ├── .env.example         # Exemplo de variáveis de ambiente
 │   └── package.json         # Dependências e scripts da interface
+├── docker-compose.yml       # Orquestração dos serviços com Docker
 ````
 
 ---
@@ -70,67 +76,92 @@ Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defes
 
 ---
 
-### 🖥 Iniciando o Backend
+### 1️⃣ Clonar o repositório
+
+```bash
+git clone https://github.com/seu-usuario/Sistema_De_Gerenciamento_De_TCC.git
+cd Sistema_De_Gerenciamento_De_TCC
+```
+
+---
+
+### 2️⃣ Instalar dependências
+
+```bash
+# Frontend
+cd frontend
+npm install
+
+# Backend
+cd ../backend
+npm install
+```
+
+---
+
+### 3️⃣ Configurar variáveis de ambiente
+
+Crie um arquivo `.env` em cada pasta com base no `.env.example`.
+
+#### 📁 backend/.env
+
+```env
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/meu_banco
+PORT=3000
+NODE_ENV=development
+JWT_SECRET=sua_chave_jwt
+SENDGRID_API_KEY=sua_chave_sendgrid
+CLIENT_URL=http://localhost:5173
+```
+
+#### 📁 frontend/.env
+
+```env
+VITE_API_URL=http://localhost:3000/api/
+```
+
+---
+
+### 4️⃣ Executar o Prisma
+
+No diretório `backend`:
+
+```bash
+npx prisma generate
+npx prisma migrate dev --name initial_setup
+npx tsx prisma/seed.ts
+```
+
+---
+
+### 5️⃣ Iniciar os servidores
+
+#### Backend:
 
 ```bash
 cd backend
-npm install
-```
-
-Crie um arquivo `.env` com as variáveis de ambiente:
-
-```env
-DATABASE_URL="postgresql://user:password@host:port/database_name"
-PORT=3000
-# Outras variáveis, como chaves JWT
-```
-
-Rode as migrações com Prisma:
-
-```bash
-npx prisma migrate dev --name initial_setup
-```
-
-Inicie o servidor:
-
-```bash
-npm run dev
-# ou npm start (modo produção)
-```
-
-Acesse em: [http://localhost:3000](http://localhost:3000)
-
----
-
-### 🌐 Iniciando o Frontend
-
-```bash
-cd ../frontend
-npm install
 npm run dev
 ```
 
-Acesse em: [http://localhost:5173](http://localhost:5173)
+#### Frontend:
+
+```bash
+cd frontend
+npm run dev
+```
 
 ---
 
-## 🐳 Usando Docker
+## 🐳 Executar com Docker
 
-Certifique-se de estar na *raiz do projeto*.
-
-1. Build das imagens:
+1. Na raiz do projeto, execute:
 
 ```bash
 docker-compose build
-```
-
-2. Suba os serviços:
-
-```bash
 docker-compose up
 ```
 
-> Isso requer um arquivo `docker-compose.yml` na raiz. Se ainda não tiver, posso gerar um modelo para você.
+> Isso irá subir automaticamente o banco de dados, backend e frontend.
 
 ---
 
@@ -161,14 +192,15 @@ git push origin feature/minha-feature
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a *Licença MIT*.
+Este projeto está licenciado sob a **Licença MIT**.
 
 ---
 
-Feito com ❤ pela equipe *Neukox*.
+Feito com ❤ pela equipe **Neukox**.
 
 ```
 
 ---
 
+Se quiser, posso também te gerar um `docker-compose.yml` pronto para esse projeto com PostgreSQL + backend + frontend rodando em rede. Deseja isso agora?
 ```
