@@ -1,0 +1,308 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoUsuario {
+  ADMIN
+  ALUNO
+  PROFESSOR
+}
+
+enum PapelBanca {
+  ORIENTADOR
+  COORIENTADOR
+  MEMBRO
+}
+
+enum StatusTCC {
+  PLANEJAMENTO
+  DESENVOLVIMENTO
+  REVISAO
+  FINALIZACAO
+  CONCLUIDO
+}
+
+enum StatusAtividade {
+  PENDENTE
+  CONCLUIDA
+}
+
+enum TopicoComentario {
+  GERAL
+  ORIENTACAO
+  ATIVIDADE
+  BANCA
+  OUTRO
+}
+
+enum StatusDefesa {
+  NAO_REALIZADA
+  AGENDADA
+  REALIZADA
+  CANCELADA
+}
+
+enum TipoDefesa {
+  PRE_BANCA
+  BANCA_FINAL
+}
+
+enum StatusEtapa {
+  NAO_INICIADA
+  EM_ANDAMENTO
+  CONCLUIDA
+}
+
+enum StatusReuniao {
+  AGENDADA
+  REALIZADA
+  CANCELADA
+  NAO_COMPARECEU
+}
+
+enum CategoriasAreasConhecimento {
+  CIENCIAS_HUMANAS
+  CIENCIAS_EXATAS
+  CIENCIAS_BIOLOGICAS
+  ENGENHARIAS
+  CIENCIAS_SOCIAIS
+  CIENCIAS_AGRARIAS
+  LINGUISTICA
+  TECNOLOGIA
+  ARTES
+  SAUDE
+  OUTROS
+}
+
+enum AcoesHistorico {
+  CRIAR
+  ALTERAR
+  ATUALIZAR
+  CANCELAR
+  EXCLUIR
+}
+
+enum EntidadesHistorico {
+  TCC
+  ATIVIDADE
+  COMENTARIO
+  ANOTACAO
+  ETAPA_TCC
+  REUNIAO
+  DEFESA
+}
+
+model AreaConhecimento {
+  id        Int                         @id @default(autoincrement())
+  categoria CategoriasAreasConhecimento
+  nome      String                      @unique
+
+  tccs TCC[]
+}
+
+model Usuario {
+  id            Int         @id @default(autoincrement())
+  nome_completo String
+  email         String      @unique
+  senha         String
+  tipo          TipoUsuario
+  criado_em     DateTime    @default(now())
+  atualizado_em DateTime    @updatedAt
+
+  Aluno            Aluno?
+  Professor        Professor?
+  Comentarios      Comentario[]
+  RecuperacaoSenha RecuperacaoSenha[]
+
+  HistoricoTcc HistoricoTcc[]
+}
+
+model Aluno {
+  Usuario_id Int    @id
+  curso      String
+
+  Usuario Usuario @relation(fields: [Usuario_id], references: [id])
+  TCCs    TCC[]
+}
+
+model Professor {
+  Usuario_id      Int     @id
+  area_atuacao    String
+  disponibilidade Boolean
+
+  Orientacoes   TCC[] @relation("Orientacoes")
+  Coorientacoes TCC[] @relation("Coorientacoes")
+
+  Usuario Usuario @relation(fields: [Usuario_id], references: [id])
+  Bancas  Banca[]
+}
+
+model TCC {
+  id                 Int       @id @default(autoincrement())
+  titulo             String
+  tema               String
+  resumo             String
+  dataInicio         DateTime?
+  dataConclusao      DateTime?
+  criado_em          DateTime  @default(now())
+  ultima_atualizacao DateTime  @updatedAt
+  status_atual       StatusTCC @default(PLANEJAMENTO)
+  finalizado_em      DateTime?
+
+  Aluno_id            Int
+  Orientador_id       Int?
+  Coorientador_id     Int?
+  AreaConhecimento_id Int?
+
+  Aluno            Aluno             @relation(fields: [Aluno_id], references: [Usuario_id])
+  Bancas           Banca[]
+  Orientador       Professor?        @relation("Orientacoes", fields: [Orientador_id], references: [Usuario_id])
+  Coorientador     Professor?        @relation("Coorientacoes", fields: [Coorientador_id], references: [Usuario_id])
+  Atividades       Atividade[]
+  Comentarios      Comentario[]
+  AreaConhecimento AreaConhecimento? @relation(fields: [AreaConhecimento_id], references: [id])
+  Anotacoes        Anotacao[]
+  EtapasTCC        EtapaTCC[]
+  Reunioes         Reuniao[]
+  Defesas          Defesa[]
+
+  HistoricoTcc HistoricoTcc[]
+}
+
+model Banca {
+  TCC_id       Int
+  Professor_id Int
+  papel        PapelBanca
+
+  TCC       TCC       @relation(fields: [TCC_id], references: [id])
+  Professor Professor @relation(fields: [Professor_id], references: [Usuario_id])
+
+  @@id([TCC_id, Professor_id])
+}
+
+model Atividade {
+  id           Int             @id @default(autoincrement())
+  nome         String
+  descricao    String
+  status       StatusAtividade
+  data_entrega DateTime
+  arquivo_url  String?
+  concluido_em DateTime?
+
+  TCC_id Int
+
+  TCC         TCC          @relation(fields: [TCC_id], references: [id])
+  Comentarios Comentario[]
+}
+
+model Comentario {
+  id                 Int              @id @default(autoincrement())
+  topico             TopicoComentario
+  texto              String
+  titulo             String
+  data_criacao       DateTime         @default(now())
+  ultima_atualizacao DateTime         @updatedAt
+
+  TCC_id        Int
+  Usuario_id    Int
+  Atividades_id Int?
+
+  TCC       TCC        @relation(fields: [TCC_id], references: [id])
+  Usuario   Usuario    @relation(fields: [Usuario_id], references: [id])
+  Atividade Atividade? @relation(fields: [Atividades_id], references: [id])
+}
+
+model Anotacao {
+  id            Int      @id @default(autoincrement())
+  conteudo      String
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @updatedAt
+
+  TCC_id Int
+
+  TCC TCC @relation(fields: [TCC_id], references: [id])
+}
+
+model RecuperacaoSenha {
+  id        Int      @id @default(autoincrement())
+  tokenHash String   @unique
+  expiracao DateTime
+  criado_em DateTime @default(now())
+
+  Usuario_id Int
+
+  Usuario Usuario @relation(fields: [Usuario_id], references: [id])
+}
+
+// Novos modelos para cálculo de progresso
+
+model EtapaTCC {
+  id           Int         @id @default(autoincrement())
+  nome         String
+  descricao    String
+  ordem        Int // ordem das etapas (1, 2, 3...)
+  status       StatusEtapa @default(NAO_INICIADA)
+  concluida_em DateTime?
+  criado_em    DateTime    @default(now())
+
+  TCC_id Int
+  TCC    TCC @relation(fields: [TCC_id], references: [id])
+
+  @@unique([TCC_id, ordem])
+}
+
+model Reuniao {
+  id             Int           @id @default(autoincrement())
+  titulo         String
+  descricao      String?
+  data_agendada  DateTime
+  data_realizada DateTime?
+  status         StatusReuniao @default(AGENDADA)
+  observacoes    String?
+  criado_em      DateTime      @default(now())
+
+  TCC_id Int
+  TCC    TCC @relation(fields: [TCC_id], references: [id])
+}
+
+model Defesa {
+  id             Int          @id @default(autoincrement())
+  tipo           TipoDefesa
+  data_agendada  DateTime?
+  data_realizada DateTime?
+  status         StatusDefesa @default(NAO_REALIZADA)
+  nota           Float?
+  observacoes    String?
+  criado_em      DateTime     @default(now())
+
+  TCC_id Int
+  TCC    TCC @relation(fields: [TCC_id], references: [id])
+
+  @@unique([TCC_id, tipo])
+}
+
+model HistoricoTcc {
+  id         Int                @id @default(autoincrement())
+  acao       AcoesHistorico
+  entidade   EntidadesHistorico
+  entidadeId Int
+  usuarioId  Int
+  descricao  String
+  detalhes   String?
+  tccId      Int
+  feito_em   DateTime           @default(now())
+
+  Usuario Usuario @relation(fields: [usuarioId], references: [id])
+  TCC     TCC     @relation(fields: [tccId], references: [id])
+}

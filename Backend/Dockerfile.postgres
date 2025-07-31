@@ -1,0 +1,10 @@
+# Usa imagem base oficial do PostgreSQL
+FROM postgres:16
+
+# Define variáveis de ambiente (podem ser sobrescritas via CLI)
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=meu_banco
+
+# Expondo a porta padrão
+EXPOSE 5432
