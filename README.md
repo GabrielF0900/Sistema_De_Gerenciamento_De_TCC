@@ -1,3 +1,4 @@
+Ótimo! Com base nas **duas imagens da estrutura de pastas dos diretórios `Backend/` e `Frontend/`** e no `docker-compose.yml` na raiz, aqui está o `README.md` atualizado com uma **estrutura de projeto realista, detalhada e clara**, refletindo fielmente seus diretórios:
 
 ---
 
@@ -219,3 +220,6 @@ Feito com 💙 por **Neukox**.
 ```
 
 ---
+
+Se quiser, posso gerar também o conteúdo do `docker-compose.yml` baseado nos arquivos `Dockerfile.backend` e `Dockerfile.postgres`. Deseja isso?
+```
