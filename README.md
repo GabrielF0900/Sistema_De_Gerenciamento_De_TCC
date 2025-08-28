@@ -191,6 +191,16 @@ git push origin feature/nova-funcionalidade
 
 7. <img width="1915" height="922" alt="image" src="https://github.com/user-attachments/assets/aea10156-0796-4f07-8600-39ae60e51ace" />
 
+Layout onde tem assistência com IA - FocoTCC
+
+<img width="1914" height="922" alt="image" src="https://github.com/user-attachments/assets/46e0e87b-4fb0-4a6e-8138-236612a27255" />
+
+8. Foto onde mostra a lista de atividades criadas com seus status.
+
+<img width="1919" height="933" alt="image" src="https://github.com/user-attachments/assets/5b9f2311-7725-4e5e-b635-79218f23878b" />
+
+
+
 
 ---
 
