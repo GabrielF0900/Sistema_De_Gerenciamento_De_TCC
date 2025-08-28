@@ -193,8 +193,7 @@ git push origin feature/nova-funcionalidade
 ## 📸 Layouts e Funcionalidades
 
 ### 1️⃣ Layout do Dashboard - FocoTCC
-<img width="1917" height="929" alt="image" src="https://github.com/user-attachments/assets/04f4e357-7e31-4417-95f7-fb679171222a" />
-
+<img src="./docs/images/dashboard.jpg" width="800" />
 ---
 
 ### 2️⃣ Layout assistente de IA do FocoTCC
