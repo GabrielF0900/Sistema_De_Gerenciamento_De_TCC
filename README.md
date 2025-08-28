@@ -197,12 +197,11 @@ git push origin feature/nova-funcionalidade
 ---
 
 ### 2️⃣ Layout assistente de IA do FocoTCC
-<img width="1919" height="921" alt="image" src="https://github.com/user-attachments/assets/fdef76bd-59be-4f0f-a597-e5b55ea49f26" />
-
+<img src="./docs/images/ia-assistenteia.jpg" width="800" />
 ---
 
 ### 3️⃣ Lista de Atividades e Status
-<img width="1917" height="928" alt="image" src="https://github.com/user-attachments/assets/bd701d34-010d-4b36-a9e3-804bf6ab7961" />
+<img src="./docs/images/tarefas.jpg" width="800" />
 
 ---
 
