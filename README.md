@@ -192,18 +192,18 @@ git push origin feature/nova-funcionalidade
 
 ## 📸 Layouts e Funcionalidades
 
-### 1️⃣ Assistência com IA - FocoTCC
-<img width="1915" height="922" alt="Assistência com IA" src="https://github.com/user-attachments/assets/aea10156-0796-4f07-8600-39ae60e51ace" />
+### 1️⃣ Layout do Dashboard - FocoTCC
+<img width="1917" height="929" alt="image" src="https://github.com/user-attachments/assets/04f4e357-7e31-4417-95f7-fb679171222a" />
 
 ---
 
-### 2️⃣ Layout com funcionalidades principais
-<img width="1914" height="922" alt="Layout Principal" src="https://github.com/user-attachments/assets/46e0e87b-4fb0-4a6e-8138-236612a27255" />
+### 2️⃣ Layout assistente de IA do FocoTCC
+<img width="1919" height="921" alt="image" src="https://github.com/user-attachments/assets/fdef76bd-59be-4f0f-a597-e5b55ea49f26" />
 
 ---
 
 ### 3️⃣ Lista de Atividades e Status
-<img width="1919" height="933" alt="Lista de Atividades" src="https://github.com/user-attachments/assets/5b9f2311-7725-4e5e-b635-79218f23878b" />
+<img width="1917" height="928" alt="image" src="https://github.com/user-attachments/assets/bd701d34-010d-4b36-a9e3-804bf6ab7961" />
 
 ---
 
