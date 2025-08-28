@@ -187,6 +187,11 @@ git push origin feature/nova-funcionalidade
 
 5. Crie um Pull Request 🚀
 
+6. Fotos:
+
+7. <img width="1915" height="922" alt="image" src="https://github.com/user-attachments/assets/aea10156-0796-4f07-8600-39ae60e51ace" />
+
+
 ---
 
 ## 📄 Licença
