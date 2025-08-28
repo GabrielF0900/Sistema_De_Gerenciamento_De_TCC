@@ -1,16 +1,17 @@
 
----
 
 ````markdown
 # 🎓 Sistema de Gerenciamento de TCC
 
-Bem-vindo(a)! Este projeto foi cuidadosamente desenvolvido para simplificar e otimizar o processo de acompanhamento e avaliação de Trabalhos de Conclusão de Curso. A missão é facilitar a jornada de alunos, orientadores e bancas, promovendo organização, transparência e eficiência.
+Bem-vindo(a)! Este projeto foi cuidadosamente desenvolvido para simplificar e otimizar o processo de acompanhamento e avaliação de Trabalhos de Conclusão de Curso.  
+O objetivo é **facilitar a jornada de alunos, orientadores e bancas**, promovendo organização, transparência e eficiência.
 
 ---
 
 ## ✨ Visão Geral
 
-Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defesa final — é centralizada e gerenciada com facilidade. É exatamente isso que estamos construindo: um sistema robusto, intuitivo e modular para instituições de ensino.
+Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defesa final — é centralizada e gerenciada com facilidade.  
+É exatamente isso que estamos construindo: **um sistema robusto, intuitivo e modular para instituições de ensino**.
 
 ---
 
@@ -18,23 +19,23 @@ Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defes
 
 ### 🔧 Backend
 
-| Categoria | Tecnologia | Descrição                             |
-| --------- | ---------- | ------------------------------------- |
-| Linguagem | TypeScript | JavaScript com tipagem estática       |
-| Framework | Node.js    | Ambiente de execução JavaScript       |
-| ORM       | Prisma     | Mapeamento objeto-relacional moderno  |
-| Container | Docker     | Isolamento e orquestração de ambientes|
+| Categoria  | Tecnologia | Descrição                             |
+| ---------- | ---------- | ------------------------------------- |
+| Linguagem  | TypeScript | JavaScript com tipagem estática       |
+| Framework  | Node.js    | Ambiente de execução JavaScript       |
+| ORM        | Prisma     | Mapeamento objeto-relacional moderno  |
+| Container  | Docker     | Isolamento e orquestração de ambientes|
 
 ### 🎨 Frontend
 
-| Categoria | Tecnologia  | Descrição                                      |
-| --------- | ----------- | ---------------------------------------------- |
-| Linguagem | TypeScript  | JavaScript com tipagem estática                |
-| Framework | React       | Biblioteca reativa para construção de UI       |
-| Bundler   | Vite        | Ferramenta de build rápida e moderna           |
-| Estilo    | TailwindCSS | Utilitário CSS para estilização                |
-| Linter    | ESLint      | Padronização e qualidade de código             |
-| Container | Docker      | Isolamento e orquestração de ambientes         |
+| Categoria  | Tecnologia  | Descrição                                      |
+| ---------- | ----------- | ---------------------------------------------- |
+| Linguagem  | TypeScript  | JavaScript com tipagem estática                |
+| Framework  | React       | Biblioteca reativa para construção de UI       |
+| Bundler    | Vite        | Ferramenta de build rápida e moderna           |
+| Estilo     | TailwindCSS | Utilitário CSS para estilização                |
+| Linter     | ESLint      | Padronização e qualidade de código             |
+| Container  | Docker      | Isolamento e orquestração de ambientes         |
 
 ---
 
@@ -43,28 +44,28 @@ Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defes
 ```bash
 .
 ├── backend/
-│   ├── prisma/                        # Schema, migrations e seed do banco
-│   ├── src/                           # Código-fonte da API
-│   ├── templates/                     # Templates de e-mail
-│   ├── .env.example                   # Exemplo de variáveis de ambiente
-│   ├── Dockerfile.backend             # Dockerfile da API
-│   ├── Dockerfile.postgres            # Dockerfile do banco de dados
-│   ├── diversos arquivos .md          # Exemplos, algoritmos e documentação
-│   ├── package.json                   # Dependências e scripts
-│   └── tsconfig.json                  # Configuração TypeScript
+│   ├── prisma/              # Schema, migrations e seed do banco
+│   ├── src/                 # Código-fonte da API
+│   ├── templates/           # Templates de e-mail
+│   ├── .env.example         # Exemplo de variáveis de ambiente
+│   ├── Dockerfile.backend   # Dockerfile da API
+│   ├── Dockerfile.postgres  # Dockerfile do banco de dados
+│   ├── *.md                 # Exemplos, algoritmos e documentação
+│   ├── package.json         # Dependências e scripts
+│   └── tsconfig.json        # Configuração TypeScript
 │
 ├── frontend/
-│   ├── public/                        # Assets públicos
-│   ├── src/                           # Código-fonte React
-│   ├── .env.example                   # Exemplo de variáveis de ambiente
-│   ├── README.md                      # Documentação do Frontend
-│   ├── tailwind.config.js            # Configuração do Tailwind
-│   ├── vite.config.ts                # Configuração do Vite
-│   └── tsconfig.*.json               # Configurações TS específicas
+│   ├── public/              # Assets públicos
+│   ├── src/                 # Código-fonte React
+│   ├── .env.example         # Exemplo de variáveis de ambiente
+│   ├── README.md            # Documentação do Frontend
+│   ├── tailwind.config.js   # Configuração do Tailwind
+│   ├── vite.config.ts       # Configuração do Vite
+│   └── tsconfig.*.json      # Configurações TS específicas
 │
-├── docker-compose.yml                # Orquestração dos serviços
-└── README.md                         # Este arquivo
-````
+├── docker-compose.yml       # Orquestração dos serviços
+└── README.md                # Este arquivo
+```
 
 ---
 
@@ -72,10 +73,10 @@ Imagine uma plataforma onde cada etapa do TCC — da submissão do tema à defes
 
 ### 🔧 Pré-requisitos
 
-* [Node.js (versão LTS)](https://nodejs.org)
-* npm (ou yarn)
-* Git
-* Docker & Docker Compose (opcional, mas recomendado)
+- [Node.js (versão LTS)](https://nodejs.org)  
+- npm (ou yarn)  
+- Git  
+- Docker & Docker Compose (opcional, mas recomendado)  
 
 ---
 
@@ -166,41 +167,43 @@ docker-compose up
 
 ## 🤝 Contribuindo
 
-1. Faça um fork do projeto
-2. Crie uma nova branch:
+1. Faça um fork do projeto  
+2. Crie uma nova branch:  
 
 ```bash
 git checkout -b feature/nova-funcionalidade
 ```
 
-3. Faça commits claros e objetivos:
+3. Faça commits claros e objetivos:  
 
 ```bash
 git commit -m "feat: adiciona nova funcionalidade"
 ```
 
-4. Envie para seu fork:
+4. Envie para seu fork:  
 
 ```bash
 git push origin feature/nova-funcionalidade
 ```
 
-5. Crie um Pull Request 🚀
+5. Crie um Pull Request 🚀  
 
-6. Fotos:
+---
 
-7. <img width="1915" height="922" alt="image" src="https://github.com/user-attachments/assets/aea10156-0796-4f07-8600-39ae60e51ace" />
+## 📸 Layouts e Funcionalidades
 
-Layout onde tem assistência com IA - FocoTCC
+### 1️⃣ Assistência com IA - FocoTCC
+<img width="1915" height="922" alt="Assistência com IA" src="https://github.com/user-attachments/assets/aea10156-0796-4f07-8600-39ae60e51ace" />
 
-<img width="1914" height="922" alt="image" src="https://github.com/user-attachments/assets/46e0e87b-4fb0-4a6e-8138-236612a27255" />
+---
 
-8. Foto onde mostra a lista de atividades criadas com seus status.
+### 2️⃣ Layout com funcionalidades principais
+<img width="1914" height="922" alt="Layout Principal" src="https://github.com/user-attachments/assets/46e0e87b-4fb0-4a6e-8138-236612a27255" />
 
-<img width="1919" height="933" alt="image" src="https://github.com/user-attachments/assets/5b9f2311-7725-4e5e-b635-79218f23878b" />
+---
 
-
-
+### 3️⃣ Lista de Atividades e Status
+<img width="1919" height="933" alt="Lista de Atividades" src="https://github.com/user-attachments/assets/5b9f2311-7725-4e5e-b635-79218f23878b" />
 
 ---
 
@@ -211,5 +214,6 @@ Este projeto está sob a licença **MIT**.
 ---
 
 Feito com 💙 pela equipe **Neukox**.
+````
 
-```
+---
